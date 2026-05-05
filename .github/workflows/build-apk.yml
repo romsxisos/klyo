@@ -58,7 +58,7 @@ jobs:
 
       # 8. Configurar keystore desde Secrets (opcional — si no hay, se usa debug key)
       - name: Configurar keystore (si existe)
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: ${{ secrets.KEYSTORE_BASE64 != null }}
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/klyo-release.jks
           echo "KEYSTORE_FILE=$GITHUB_WORKSPACE/android/app/klyo-release.jks" >> $GITHUB_ENV
